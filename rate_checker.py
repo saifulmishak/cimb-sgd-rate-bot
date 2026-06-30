@@ -72,15 +72,13 @@ Time: {now.strftime('%d %b %H:%M')}
 
 Set target: /target X.XX"""
 
-    # Send
+    # Simple test message first
+    test_message = f"🧪 Test from GitHub Actions - {now.strftime('%H:%M')}\nRate: {rate if rate else 'Failed to fetch'}"
     try:
-        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-        requests.post(url, json={"chat_id": CHAT_ID, "text": message, "parse_mode": "Markdown"})
-        print("Message sent successfully")
+        requests.post(
+            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+            json={"chat_id": CHAT_ID, "text": test_message}
+        )
+        print("Test message sent successfully")
     except Exception as e:
-        print(f"Send failed: {e}")
-else:
-    print("Failed to get rate")
-
-save_data(data)
-print("Script finished")
+        print(f"Send error: {e}")
