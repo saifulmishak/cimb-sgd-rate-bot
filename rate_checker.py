@@ -56,7 +56,7 @@ if rate:
 Current: 1 SGD = {rate:.4f} MYR
 High: {data['high']:.4f} MYR 📈
 Low: {data['low']:.4f} MYR 📉
-Time: {now.strftime('%H:%Mhrs @ %d %B %Y')}
+Time: {now.strftime('%d %b %H:%Mhrs')}
 
 ===================================="""
 
